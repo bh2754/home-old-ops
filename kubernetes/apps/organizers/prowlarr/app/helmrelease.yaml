@@ -59,7 +59,7 @@ spec:
                   name: prowlarr-secret
 
             securityContext:
-              allowPrivilegeEscalation: trie
+              allowPrivilegeEscalation: true
               readOnlyRootFilesystem: false
               capabilities: { drop: ["ALL"] }
             resources:
