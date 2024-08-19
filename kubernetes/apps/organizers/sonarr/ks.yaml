@@ -12,7 +12,7 @@ spec:
     - name: pod-gateway
     - name: rook-ceph-cluster
     - name: volsync
-  path: ./kubernetes/apps/organizers/sonarr-dev/app
+  path: ./kubernetes/apps/organizers/sonarr/app
   prune: true
   sourceRef:
     kind: GitRepository
