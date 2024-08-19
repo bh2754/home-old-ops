@@ -58,13 +58,13 @@ spec:
         config:
           osdsPerDevice: "1"
         nodes:
-          - name: master1
+          - name: k8s-master1
             devices:
               - name: "/dev/sdb"
-          - name: master2
+          - name: k8s-master2
             devices:
               - name: "/dev/sdb"
-          - name: master3
+          - name: k8s-master3
             devices:
               - name: "/dev/sdb"
     cephBlockPools:
