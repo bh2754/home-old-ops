@@ -32,8 +32,10 @@ spec:
     controllers:
       audiobookshelf:
         pod:
+          annotations:
+            setGateway: "true"
           securityContext:
-            runAsNonRoot: true
+#           runAsNonRoot: true
             runAsUser: 568
             runAsGroup: 568
             fsGroup: 568
@@ -43,8 +45,9 @@ spec:
           app:
             image:
               repository: ghcr.io/advplyr/audiobookshelf
-              tag: 2.12.0
+              tag: 2.12.3
             env:
+              TZ: ${TIMEZONE}
               AUDIOBOOKSHELF_UID: 568
               AUDIOBOOKSHELF_GID: 568
               CONFIG_PATH: /config
@@ -70,8 +73,8 @@ spec:
               requests:
                 cpu: 100m
                 memory: 150Mi
-              limits:
-                memory: 300Mi
+#             limits:
+#               memory: 300Mi
     service:
       app:
         controller: audiobookshelf
@@ -100,7 +103,7 @@ spec:
       media:
         type: nfs
         server: ${NFS_SERVER}
-        path: ${NFS_MEDIA}
+        path: ${NFS_MEDIA}/audiobooks
         globalMounts:
           - path: /media
             readOnly: true
