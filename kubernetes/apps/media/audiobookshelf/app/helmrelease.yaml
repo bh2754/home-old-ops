@@ -26,8 +26,8 @@ spec:
   dependsOn:
     - name: rook-ceph-cluster
       namespace: rook-ceph
-#   - name: volsync
-#     namespace: volsync-system
+    - name: volsync
+      namespace: volsync-system
   values:
     controllers:
       audiobookshelf:
@@ -66,9 +66,9 @@ spec:
                   failureThreshold: 3
               readiness: *probes
             securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities: { drop: ["ALL"] }
+              allowPrivilegeEscalation: true
+              readOnlyRootFilesystem: false
+#             capabilities: { drop: ["ALL"] }
             resources:
               requests:
                 cpu: 100m
