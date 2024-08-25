@@ -34,7 +34,7 @@ includes:
   user:
     taskfile: .taskfiles/User
     optional: true
-  volsync: .taskfiles/volsync/
+  vs: .taskfiles/volsync/
 
 tasks:
 

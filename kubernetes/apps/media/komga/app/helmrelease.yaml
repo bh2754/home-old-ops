@@ -78,6 +78,3 @@ spec:
         type: nfs
         server: ${NFS_SERVER}
         path: ${NFS_MEDIA}
-        globalMounts:
-          - path: /data
-            subPath: media
