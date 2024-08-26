@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./grafana/ks.yaml
-# - ./kromgo/ks.yaml
+  - ./kromgo/ks.yaml
   - ./kube-prometheus-stack/ks.yaml
   - ./loki/ks.yaml
   - ./prometheus-operator-crds/ks.yaml
