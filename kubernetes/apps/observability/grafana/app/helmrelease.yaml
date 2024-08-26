@@ -238,11 +238,11 @@ spec:
 #          gnetId: 11314
 #          revision: 10
 #          datasource: Prometheus
-        unifi-usw:
-          # renovate: depName="UniFi-Poller: USW Insights - Prometheus"
-          gnetId: 11312
-          revision: 9
-          datasource: Prometheus
+#        unifi-usw:
+#          # renovate: depName="UniFi-Poller: USW Insights - Prometheus"
+#          gnetId: 11312
+#          revision: 9
+#          datasource: Prometheus
     sidecar:
       dashboards:
         enabled: true
