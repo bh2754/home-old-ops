@@ -1,4 +1,4 @@
----
+W{---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -47,7 +47,7 @@ spec:
         tag: null
         pullPolicy: null
       replicas: 1
-      resources: {}
+      resources: []
       # We usually recommend not to specify default resources and to leave this as a conscious
       # choice for the user. This also increases chances charts run on environments with little
       # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -137,7 +137,7 @@ spec:
       ingress:
         enabled: enable
         className: 'internal'
-        annotations: {}
+        annotations: []
         tlsSecretName: null
 
     joex:
@@ -146,7 +146,7 @@ spec:
         tag: null
         pullPolicy: null
 #     replicas: 1
-      resources: {}
+      resources: []
       # We usually recommend not to specify default resources and to leave this as a conscious
       # choice for the user. This also increases chances charts run on environments with little
       # resources, such as Minikube. If you do want to specify resources, uncomment the following
