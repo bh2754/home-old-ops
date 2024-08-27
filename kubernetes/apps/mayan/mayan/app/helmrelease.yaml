@@ -1,0 +1,343 @@
+  GNU nano 7.2                                              kubernetes/apps/observability/grafana/app/helmrelease.yaml
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: mayan
+  namespace: mayan
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: mayanedms
+      version: 4.5.0-2
+      sourceRef:
+        kind: HelmRepository
+        name: mayan
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  values:
+    global:
+      # -- Stack container imagePullSecrets
+      # imagePullSecrets: []
+      # -- Stack wide pullPolicy
+      # imageRegistry: ""
+      # namespace: mayan-edms
+      # storageClass: ""
+
+
+    image:
+      pullPolicy: IfNotPresent
+      pullSecrets: []
+      # registry: ""
+      repository: mayanedms/mayanedms
+      # -- Defautls to Chart.AppVersion.
+      # tag: ""
+
+
+    # -- Affinity for all of Mayan EDMS deployments.
+    affinity: {}
+
+    # fullnameOverride: ""
+
+
+    # nameOverride: ""
+
+
+    # nodeSelector: {}
+
+
+    # tolerations: []
+
+
+    serviceAccount:
+      # Specifies whether a service account should be created
+      create: false
+      # Annotations to add to the service account
+      annotations: {}
+      # The name of the service account to use.
+      # If not set and create is true, a name is generated using the fullname template
+      name:
+
+
+    configuration:
+      MAYAN_LOCK_MANAGER_BACKEND: mayan.apps.lock_manager.backends.redis_lock.RedisLock
+
+
+    secrets: {}
+
+
+    persistence:
+      # This controls the /mayan/media mount.
+      # This mount point is shared among all pods.
+      core:
+        annotations:
+          # How to persist a resource after uninstall:
+          # https://helm.sh/docs/howto/charts_tips_and_tricks/#tell-helm-not-to-uninstall-a-resource
+          helm.sh/resource-policy: "keep"
+        enabled: true
+        size: 1Gi
+        volume:
+          # Create a persistent volume
+          # Default: false - Delegate to the storage provisioner.
+          create: false
+
+
+    ingress:
+      className: internal
+      annotations: {}
+        # Enable the following annotation to disable NGINX request size limit
+        # and allow large documents to be uploaded.
+        # nginx.ingress.kubernetes.io/proxy-body-size: "0"
+      enabled: true
+      hosts:
+        - host: mayan.${SECRET_DOMAIN}
+          paths: [/]
+      tls: []
+      #  - secretName: mayan-tls
+      #    hosts:
+      #      - mayan.home.arpa
+
+
+    frontend:
+      # -- Frontend specific affinity.
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app.kubernetes.io/component
+                  operator: In
+                  values:
+                  - frontend
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+      autoscaling:
+        enabled: false
+        # minReplicas: 1
+        # maxReplicas: 100
+        # targetCPUUtilizationPercentage: 80
+        # targetMemoryUtilizationPercentage: 80
+      # nameOverride: frontend
+      # chartNameSuffix: frontend
+      replicaCount: 2
+      resources:
+        limits:
+          cpu: 3000m
+          memory: 3000Mi
+        requests:
+          cpu: 200m
+          memory: 512Mi
+      securityContext: {}
+        # capabilities:
+        #   drop:
+        #   - ALL
+        # readOnlyRootFilesystem: true
+        # runAsNonRoot: true
+        # runAsUser: 1000
+        # fsGroup: 999
+      service:
+        type: ClusterIP
+        port: 8000
+
+
+    workerDefaults:
+      # -- Affinity for all worker deployments.
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app.kubernetes.io/component
+                  operator: In
+                  values:
+                  - worker
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+
+
+    workers:
+      worker-a:
+        # -- Worker specific affinity.
+        # affinity: {}
+        autoscaling:
+          enabled: false
+          # minReplicas: 1
+          # maxReplicas: 100
+          # targetCPUUtilizationPercentage: 80
+          # targetMemoryUtilizationPercentage: 80
+        # nameOverride: ""
+        # -- Worker specific environment variables.
+        # extraArguments: []
+        # -- Worker specific environment variables.
+        # environment: {}
+        internalName: worker_a
+        nameSuffix: worker-a
+        replicaCount: 2
+        resources:
+          limits:
+            cpu: 3000m
+            memory: 3000Mi
+          requests:
+            cpu: 1000m
+            memory: 1000Mi
+        securityContext: {}
+          # capabilities:
+          #   drop:
+          #   - ALL
+          # readOnlyRootFilesystem: true
+          # runAsNonRoot: true
+          # runAsUser: 1000
+          # fsGroup: 999
+      worker-b:
+        autoscaling:
+          enabled: false
+          # minReplicas: 1
+          # maxReplicas: 100
+          # targetCPUUtilizationPercentage: 80
+          # targetMemoryUtilizationPercentage: 80
+        # nameOverride: ""
+        extraArguments: []
+        internalName: worker_b
+        nameSuffix: worker-b
+        replicaCount: 1
+        resources:
+          limits:
+            cpu: 3000m
+            memory: 3000Mi
+          requests:
+            cpu: 1000m
+            memory: 1000Mi
+        securityContext: {}
+          # capabilities:
+          #   drop:
+          #   - ALL
+          # readOnlyRootFilesystem: true
+          # runAsNonRoot: true
+          # runAsUser: 1000
+          # fsGroup: 999
+      worker-c:
+        autoscaling:
+          enabled: false
+          # minReplicas: 1
+          # maxReplicas: 100
+          # targetCPUUtilizationPercentage: 80
+          # targetMemoryUtilizationPercentage: 80
+        # nameOverride: ""
+        extraArguments: []
+        internalName: worker_c
+        nameSuffix: worker-c
+        replicaCount: 1
+        resources:
+          limits:
+            cpu: 3000m
+            memory: 3000Mi
+          requests:
+            cpu: 1000m
+            memory: 1000Mi
+        securityContext: {}
+          # capabilities:
+          #   drop:
+          #   - ALL
+          # readOnlyRootFilesystem: true
+          # runAsNonRoot: true
+          # runAsUser: 1000
+          # fsGroup: 999
+      worker-d:
+        autoscaling:
+          enabled: false
+          # minReplicas: 1
+          # maxReplicas: 100
+          # targetCPUUtilizationPercentage: 80
+          # targetMemoryUtilizationPercentage: 80
+        # nameOverride: ""
+        extraArguments: []
+        internalName: worker_d
+        nameSuffix: worker-d
+        replicaCount: 1
+        resources:
+          limits:
+            cpu: 4000m
+            memory: 4000Mi
+          requests:
+            cpu: 1000m
+            memory: 1000Mi
+        securityContext: {}
+          # capabilities:
+          #   drop:
+          #   - ALL
+          # readOnlyRootFilesystem: true
+          # runAsNonRoot: true
+          # runAsUser: 1000
+          # fsGroup: 999
+      worker-e:
+        autoscaling:
+          enabled: false
+          # minReplicas: 1
+          # maxReplicas: 100
+          # targetCPUUtilizationPercentage: 80
+          # targetMemoryUtilizationPercentage: 80
+        # nameOverride: ""
+        extraArguments: []
+        internalName: worker_e
+        nameSuffix: worker-e
+        replicaCount: 1
+        resources:
+          limits:
+            cpu: 3000m
+            memory: 3000Mi
+          requests:
+            cpu: 1000m
+            memory: 1000Mi
+        securityContext: {}
+          # capabilities:
+          #   drop:
+          #   - ALL
+          # readOnlyRootFilesystem: true
+          # runAsNonRoot: true
+          # runAsUser: 1000
+          # fsGroup: 999
+
+    beat:
+      # -- Affinity for the specific deployments.
+      affinity: {}
+      resources:
+        limits:
+          cpu: 1000m
+          memory: 1000Mi
+        requests:
+          cpu: 300m
+          memory: 384Mi
+
+
+    livenessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      timeoutSeconds: 5
+      successThreshold: 1
+      failureThreshold: 3
+
+
+    readinessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      timeoutSeconds: 5
+      successThreshold: 1
+      failureThreshold: 3
+
+
+    startupProbe:
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      timeoutSeconds: 5
+      successThreshold: 1
+      failureThreshold: 27
