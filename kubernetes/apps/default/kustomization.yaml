@@ -5,4 +5,4 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
-# - ./docspell/ks.yaml
+  - ./docspell/ks.yaml
