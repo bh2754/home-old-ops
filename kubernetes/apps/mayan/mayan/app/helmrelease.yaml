@@ -1,4 +1,3 @@
-  GNU nano 7.2                                              kubernetes/apps/observability/grafana/app/helmrelease.yaml
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
