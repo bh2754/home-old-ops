@@ -60,7 +60,7 @@ spec:
       #   memory: 128Mi
       appName: Docspell
       publicDomain: documents.${SECRET_DOMAIN}
-      serverSecret: null
+      serverSecret: mCR7C8qXpeAKgMPeQUz7
       bindPort: 7880
       signup:
         mode: open
