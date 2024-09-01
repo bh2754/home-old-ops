@@ -50,7 +50,7 @@ spec:
               TZ: ${TIMEZONE}
               PUID: "1000"
               PGID: "1000"
-              serverIP: tdarr-app.media.svc.cluster.local
+              serverIP: tdarr-server.media.svc.cluster.local
               serverPort: 8266
               ffmpegPath: "/usr/local/bin/ffmpeg"
               nodeName:
