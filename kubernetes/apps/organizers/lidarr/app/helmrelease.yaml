@@ -45,8 +45,6 @@ spec:
         containers:
           app:
             image:
-#             repository: ghcr.io/onedr0p/lidarr-develop
-#             tag: 2.5.2.4316@sha256:6b1b51ca85dad4f0376b6f86df4cb24d1d6c621ba9d47c1bde26cdb940f2aeb6
               repository: ghcr.io/bh2754/lidarr-develop
               tag: 2.5.3@sha256:af1e1284078b88881192a114c26c793bddf5e8e67b9f99c7c7c74a3d40c97c2b
             env:
