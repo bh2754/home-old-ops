@@ -49,9 +49,7 @@ spec:
         containers:
           app:
             image:
-#             repository: ghcr.io/onedr0p/readarr-develop
               repository: ghcr.io/bh2754/readarr-develop
-#             tag: 0.3.32.2587@sha256:1ffa6357a1e0f2dd9c608a1a2d4064e09b76d834059dda38414c734146cfa201
               tag: 0.3.32.2587@sha256:34ebdf6392e3f9a9c0b2d44a8b9272aba39cf9b2382bd04a454a22212a16a81f
             env:
               READARR__AUTH__METHOD: External
