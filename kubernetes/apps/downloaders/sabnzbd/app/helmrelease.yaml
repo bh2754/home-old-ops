@@ -42,8 +42,9 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/joryirving/sabnzbd
-              tag: 4.3.3@sha256:aba8e179e28aa7a61c9ee8777be04035c753e774cf5dedd6a0f3204a01dfe5bb
+              repository: ghcr.io/bh2754/sabnzbd
+              tag: 4.3.3@sha256:1124167cfe262c5e5c9a17d92be3a6700fa72d4f3ec535ffd5829a0cc092fe39
+
             env:
               TZ: ${TIMEZONE}
               SABNZBD__PORT: &port 8080
