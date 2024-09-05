@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: *appname
   interval: 10m
-  path: ./kubernetes/apps/database/crunchy-postgres-operator/operator
+  path: ./kubernetes/apps/databases/crunchy-postgres-operator/operator
   prune: true
   sourceRef:
     kind: GitRepository
@@ -30,7 +30,7 @@ spec:
     labels:
       app.kubernetes.io/name: *appname
   interval: 10m
-  path: ./kubernetes/apps/database/crunchy-postgres-operator/cluster
+  path: ./kubernetes/apps/databases/crunchy-postgres-operator/cluster
   prune: true
   sourceRef:
     kind: GitRepository
@@ -51,7 +51,7 @@ spec:
     labels:
       app.kubernetes.io/name: *appname
   interval: 10m
-  path: ./kubernetes/apps/database/crunchy-postgres-operator/clustersecretstore
+  path: ./kubernetes/apps/databases/crunchy-postgres-operator/clustersecretstore
   prune: true
   sourceRef:
     kind: GitRepository
@@ -73,7 +73,7 @@ spec:
     labels:
       app.kubernetes.io/name: *appname
   interval: 10m
-  path: ./kubernetes/apps/database/crunchy-postgres-operator/userinit-controller
+  path: ./kubernetes/apps/databases/crunchy-postgres-operator/userinit-controller
   prune: true
   sourceRef:
     kind: GitRepository
