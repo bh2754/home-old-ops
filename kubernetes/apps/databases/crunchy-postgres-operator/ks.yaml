@@ -6,7 +6,7 @@ metadata:
   name: &appname crunchy-postgres-operator
   namespace: flux-system
 spec:
-  targetNamespace: database
+  targetNamespace: databases
   commonMetadata:
     labels:
       app.kubernetes.io/name: *appname
@@ -25,7 +25,7 @@ metadata:
   name: &appname crunchy-postgres-operator-cluster
   namespace: flux-system
 spec:
-  targetNamespace: database
+  targetNamespace: databases
   commonMetadata:
     labels:
       app.kubernetes.io/name: *appname
@@ -46,7 +46,7 @@ metadata:
   name: &appname crunchy-postgres-operator-secretstore
   namespace: flux-system
 spec:
-  targetNamespace: database
+  targetNamespace: databases
   commonMetadata:
     labels:
       app.kubernetes.io/name: *appname
@@ -68,7 +68,7 @@ metadata:
   name: &appname crunchy-postgres-userinit-controller
   namespace: flux-system
 spec:
-  targetNamespace: database
+  targetNamespace: databases
   commonMetadata:
     labels:
       app.kubernetes.io/name: *appname
