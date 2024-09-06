@@ -55,7 +55,7 @@ spec:
               PAPERLESS_OCR_LANGUAGE: eng
               PAPERLESS_PORT: 8000
               PAPERLESS_TASK_WORKERS: 2
-              PAPERLESS_TIME_ZONE: ${TIMEZONE}
+              PAPERLESS_TIME_ZONE: ${TZ}
               PAPERLESS_URL: https://paperless.${SECRET_DOMAIN}
               USERMAP_UID: 1000
               USERMAP_GID: 1000
