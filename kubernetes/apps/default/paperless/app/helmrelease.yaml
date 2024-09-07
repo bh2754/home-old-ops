@@ -71,8 +71,6 @@ spec:
               requests:
                 cpu: 10m
                 memory: 1118Mi
-              limits:
-                memory: 1118Mi
           gotenburg:
             image:
               repository: gotenberg/gotenberg
@@ -82,8 +80,6 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 100M
-              limits:
                 memory: 100M
           # redis:
           #   image:
@@ -102,8 +98,6 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 437Mi
-              limits:
                 memory: 437Mi
     service:
       app:
