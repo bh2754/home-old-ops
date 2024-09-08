@@ -50,7 +50,7 @@ spec:
           app:
             image:
               repository: ghcr.io/bh2754/radarr-develop
-              tag: 5.10.1.9125@sha256:037454bfa1769dffcbc0741cfcb041e5ec2b9d98f023bd08492b6f0c65d212e0
+              tag: 5.10.2.9164@sha256:c4efcc807f317d5d949da21a707b1338e1d00a37fee1feb3c5b7b2ad96583e36
             env:
               COMPlus_EnableDiagnostics: "0"
               RADARR__APP__INSTANCENAME: Radarr
