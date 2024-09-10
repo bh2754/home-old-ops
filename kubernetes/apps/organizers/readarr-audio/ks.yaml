@@ -2,11 +2,15 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app readarr-audio
+  name: readarr-audio
   namespace: flux-system
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
+  targetNamespace: &namespace organizers
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app audio
   dependsOn:
     - name: onepassword-connect
     - name: pod-gateway
@@ -21,7 +25,7 @@ spec:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
       name: readarr-audio
-      namespace: &namespace organizers
+      namespace: organizers
   interval: 30m
   retryInterval: 1m
   timeout: 3m
