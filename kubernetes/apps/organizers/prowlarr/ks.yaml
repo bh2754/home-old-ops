@@ -21,11 +21,11 @@ spec:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
       name: prowlarr
-      namespace: organizers
+      namespace: &namespace organizers
   interval: 30m
   retryInterval: 1m
   timeout: 3m
-# postBuild:
-#   substitute:
-#     APP: *app
-#     CAPACITY: 1Gi
+  postBuild:
+    substitute:
+      APP: *app
+      NS: *namespace
