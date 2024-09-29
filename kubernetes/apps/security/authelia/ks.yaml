@@ -12,7 +12,7 @@ spec:
   dependsOn:
     - name: onepassword-connect
     - name: rook-ceph-cluster
-    - name: cloudnative-pg-cluster
+#   - name: cloudnative-pg-cluster
     - name: redis
   sourceRef:
     kind: GitRepository
