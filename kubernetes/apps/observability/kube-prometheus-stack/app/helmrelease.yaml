@@ -87,10 +87,10 @@ spec:
         pathType: Prefix
         hosts:
           - &host_alertmanager alertmanager.${SECRET_DOMAIN}
-        tls:
-          - hosts:
-              - *host_alertmanager
-            secretName: "alertmanager-tls"
+#       tls:
+#         - hosts:
+#             - *host_alertmanager
+#           secretName: "alertmanager-tls"
 
       alertmanagerSpec:
         replicas: 3
@@ -172,10 +172,10 @@ spec:
         pathType: Prefix
         hosts:
           - &host prometheus.${SECRET_DOMAIN}
-        tls:
-          - hosts:
-              - *host
-            secretName: "prometheus-tls"
+#       tls:
+#         - hosts:
+#             - *host
+#           secretName: "prometheus-tls"
       thanosService:
         enabled: true
       thanosServiceMonitor:
@@ -191,10 +191,10 @@ spec:
           hajimari.io/enable: "false"
         hosts:
           - &host thanos-sidecar.${SECRET_DOMAIN}
-        tls:
-          - hosts:
-              - *host
-            secretName: "thanos-sidecar-tls"
+#       tls:
+#          - hosts:
+#              - *host
+#            secretName: "thanos-sidecar-tls"
       prometheusSpec:
         replicas: 3
         replicaExternalLabelName: __replica__
