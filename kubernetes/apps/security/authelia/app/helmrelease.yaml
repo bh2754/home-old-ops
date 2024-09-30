@@ -71,7 +71,7 @@ spec:
               AUTHELIA_SESSION_REDIS_HOST: redis.databases.svc.cluster.local
               AUTHELIA_SESSION_REDIS_PORT: 6379
               AUTHELIA_STORAGE_POSTGRES_DATABASE: authelia
-              AUTHELIA_STORAGE_POSTGRES_HOST: postgres1-rw.databases.svc
+              AUTHELIA_STORAGE_POSTGRES_HOST: postgres2-rw.databases.svc
               AUTHELIA_TELEMETRY_METRICS_ADDRESS: "tcp://0.0.0.0:8080"
               AUTHELIA_TELEMETRY_METRICS_ENABLED: "true"
               AUTHELIA_THEME: dark
