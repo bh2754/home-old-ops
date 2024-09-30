@@ -2,7 +2,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: postgres1
+  name: postgres2
   namespace: databases
   annotations:
     kyverno.io/ignore: "true"
@@ -43,7 +43,7 @@ spec:
       endpointURL: http://minio.bharris.co:9000
       # Note: serverName version needs to be inclemented
       # when recovering from an existing cnpg cluster
-      serverName: &currentCluster postgres1
+      serverName: &currentCluster postgres2
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg-secret
