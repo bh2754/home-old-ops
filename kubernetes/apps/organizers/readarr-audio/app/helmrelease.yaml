@@ -50,7 +50,7 @@ spec:
           app:
             image:
               repository: ghcr.io/bh2754/readarr-develop
-              tag: 0.4.0.2634@sha256:50c3b8444942525e001295c2d6c9ea3256823c0a00500144770e11f6b56c39fa
+              tag: 0.4.3.2665@sha256:62209dc2892e6cef596b3137bd636e739458375596102f28a7910b2620149b47
             env:
               READARR__AUTH__METHOD: External
               READARR__AUTH__REQUIRED: DisabledForLocalAddresses
