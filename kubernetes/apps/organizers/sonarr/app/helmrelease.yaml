@@ -50,7 +50,7 @@ spec:
           app:
             image:
               repository: ghcr.io/bh2754/sonarr-develop
-              tag: 4.0.10.2656@sha256:95bf8cfe9af258ad01e4d31211020044716b5460d0abf08b3787f11694669e9f
+              tag: 4.0.11.2762@sha256:1d4b9908ece0553b11601694e339e16059c33e4e74121899e244c1b03da2f3eb
             env:
               COMPlus_EnableDiagnostics: "0"
               SONARR__APP__INSTANCENAME: Sonarr
