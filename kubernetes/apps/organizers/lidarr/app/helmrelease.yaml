@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 3.4.0
+      version: 3.5.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -46,7 +46,7 @@ spec:
           app:
             image:
               repository: ghcr.io/bh2754/lidarr-develop
-              tag: 2.6.3@sha256:d0c11aee964e02ff04162d5d397b0f642c5e442bc84ce7e9b7463bcc87cff797
+              tag: 2.8.1@sha256:1ea820b39119fcf6462ca438d6ea021cf3d2cf1ae4c26884b7fc4cac18047916
             env:
               LIDARR__AUTH__METHOD: External
               LIDARR__AUTH__REQUIRED: DisabledForLocalAddresses

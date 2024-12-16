@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 3.4.0
+      version: 3.5.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -46,7 +46,7 @@ spec:
           app:
             image:
               repository: ghcr.io/bh2754/prowlarr-nightly
-              tag: 1.25.2.4776@sha256:eb7404fc808491d06c1b374a30ced38b38b56ed3efcbd607505f149d03cb9dc1
+              tag: 1.28.1.4879@sha256:950b3fee6bcccf6d2ed532ae1da70976022fc1bd79bb982694d666313c923c71
             env:
               PROWLARR__APP_INSTANCENAME: Prowlarr
               PROWLARR__PORT: &port 9696

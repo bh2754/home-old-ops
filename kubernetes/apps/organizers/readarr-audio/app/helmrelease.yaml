@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 3.4.0
+      version: 3.5.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -50,7 +50,7 @@ spec:
           app:
             image:
               repository: ghcr.io/bh2754/readarr-develop
-              tag: 0.4.0.2634@sha256:50c3b8444942525e001295c2d6c9ea3256823c0a00500144770e11f6b56c39fa
+              tag: 0.4.5.2699@sha256:94706477f7ecd18904bdda814c6bb9ff5a40840fc486f851b74d9db0382f954c
             env:
               READARR__AUTH__METHOD: External
               READARR__AUTH__REQUIRED: DisabledForLocalAddresses

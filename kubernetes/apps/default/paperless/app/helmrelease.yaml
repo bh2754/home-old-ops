@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 3.4.0
+      version: 3.5.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -35,12 +35,12 @@ spec:
                   name: paperless-secret
             image:
               repository: ghcr.io/onedr0p/postgres-init
-              tag: "16.3"
+              tag: "16.6"
         containers:
           app:
             image:
               repository: ghcr.io/paperless-ngx/paperless-ngx
-              tag: 2.12.1
+              tag: 2.13.5
             envFrom: *envFrom
             env:
               COMPOSE_PROJECT_NAME: paperless
@@ -74,7 +74,7 @@ spec:
           gotenburg:
             image:
               repository: gotenberg/gotenberg
-              tag: 8.11.1
+              tag: 8.14.1
             env:
               - { name: DISABLE_GOOGLE_CHROME, value: "1" }
             resources:
