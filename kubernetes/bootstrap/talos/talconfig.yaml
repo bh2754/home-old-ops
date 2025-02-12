@@ -24,7 +24,7 @@ nodes:
   - hostname: "k8s-master1"
     ipAddress: "10.0.111.11"
     installDisk: "/dev/sda"
-    talosImageURL: factory.talos.dev/installer/06d63a3941fe10e7f954cfcb7a8f9bc0e409a8bd6ebde73b60279b1ba359eadb
+    talosImageURL: factory.talos.dev/installer/903b2da78f99adef03cbbd4df6714563823f63218508800751560d3bc3557e40
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -41,7 +41,7 @@ nodes:
   - hostname: "k8s-master2"
     ipAddress: "10.0.111.12"
     installDisk: "/dev/sda"
-    talosImageURL: factory.talos.dev/installer/06d63a3941fe10e7f954cfcb7a8f9bc0e409a8bd6ebde73b60279b1ba359eadb
+    talosImageURL: factory.talos.dev/installer/903b2da78f99adef03cbbd4df6714563823f63218508800751560d3bc3557e40
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -58,7 +58,7 @@ nodes:
   - hostname: "k8s-master3"
     ipAddress: "10.0.111.13"
     installDisk: "/dev/sda"
-    talosImageURL: factory.talos.dev/installer/06d63a3941fe10e7f954cfcb7a8f9bc0e409a8bd6ebde73b60279b1ba359eadb
+    talosImageURL: factory.talos.dev/installer/903b2da78f99adef03cbbd4df6714563823f63218508800751560d3bc3557e40
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -82,6 +82,13 @@ patches:
         nameservers:
           - 192.168.60.1
           - 192.168.60.2
+  - # Configure NTP
+    |-
+    machine:
+      time:
+        disabled: false
+        servers:
+          - pool.ntp.org
   - "@./patches/global/cluster-discovery.yaml"
   - "@./patches/global/containerd.yaml"
   - "@./patches/global/disable-search-domain.yaml"
